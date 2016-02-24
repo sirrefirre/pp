@@ -4,7 +4,7 @@
 
 public class begin {
     //max values
-    private static int MAX_V = 15;
+    private static int MAX_V = 10;
     private static int MAX_A = 7;
     private static int MAX_B = 7;
     private static int MAX_C = 7;
@@ -32,14 +32,15 @@ public class begin {
         if(max_c > MAX_C) max_c = MAX_C;
 
         repairstation rs = new repairstation();
+        int id = 0;
         for(int i =  max_a; i > 0; i--){
-            new vehicle(rs, 'a').start();
+            new vehicle(rs, 'a', id++).start();
         }
         for(int i =  max_b; i > 0; i--){
-            new vehicle(rs, 'b').start();
+            new vehicle(rs, 'b', id++).start();
         }
         for(int i =  max_c; i > 0; i--){
-            new vehicle(rs, 'c').start();
+            new vehicle(rs, 'c', id++).start();
         }
     }
 }
