@@ -1,5 +1,8 @@
 /**
- * Created by Simon on 2016-02-24.
+ * Initiates vehicles based on initial parameters and
+ * the monitor repairstation.
+ *
+ * Unfair implementation
  */
 
 public class begin {
@@ -30,15 +33,19 @@ public class begin {
         if(max_a > MAX_A) max_a = MAX_A;
         if(max_b > MAX_B) max_b = MAX_B;
         if(max_c > MAX_C) max_c = MAX_C;
-
+        //create monitor
         repairstation rs = new repairstation();
+        //id to keep track of all vehicles
         int id = 0;
+        //start vehicles type a
         for(int i =  max_a; i > 0; i--){
             new vehicle(rs, 'a', id++).start();
         }
+        //start vehicles type b
         for(int i =  max_b; i > 0; i--){
             new vehicle(rs, 'b', id++).start();
         }
+        //start vehicles type c
         for(int i =  max_c; i > 0; i--){
             new vehicle(rs, 'c', id++).start();
         }
