@@ -1,13 +1,13 @@
 /**
  * vehicle object started by begin/main
  */
-class vehicle extends Thread {
-    private repairstation rs;
+class Vehicle extends Thread {
+    private RepairStation rs;
     private char type;
     private int id;
 
     //set local variables to input
-    public vehicle(repairstation rs, char type, int id) {
+    public Vehicle(RepairStation rs, char type, int id) {
         this.rs = rs;
         this.type = type;
         this.id = id;
@@ -15,7 +15,7 @@ class vehicle extends Thread {
     //when object is started
     public void run() {
         //loop for number of repairs on this car
-        for(int i = begin.repairs_per_car; i > 0; i--){
+        for(int i = Begin.REPAIRS_PER_CAR; i > 0; i--){
             //arrive at station for repair
             rs.arrive(type, id);
             //simulate repair time

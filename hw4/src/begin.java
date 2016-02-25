@@ -2,52 +2,54 @@
  * Initiates vehicles based on initial parameters and
  * the monitor repairstation.
  *
+ * run with "java Begin vehicles a b c"
+ * compiled with "make"
  * Unfair implementation
  */
 
-public class begin {
+public class Begin {
     //max values
-    private static int MAX_V = 10;
+    private static int MAX_VEHICLES = 10;
     private static int MAX_A = 7;
     private static int MAX_B = 7;
     private static int MAX_C = 7;
 
     //input values
-    public static int max_vehicles = MAX_V;
-    public static int max_a = MAX_A;
-    public static int max_b = MAX_B;
-    public static int max_c = MAX_C;
-    public static int repairs_per_car = 5;
+    public static int VEHICLES = MAX_VEHICLES;
+    public static int A = MAX_A;
+    public static int B = MAX_B;
+    public static int C = MAX_C;
+    public static int REPAIRS_PER_CAR = 5;
 
     //main
     public static void main(String args[]){
         int len = args.length;
         //set values if given
-        if(len>0) max_vehicles = Integer.parseInt(args[0]);
-        if(len>1) max_a = Integer.parseInt(args[1]);
-        if(len>2) max_b = Integer.parseInt(args[2]);
-        if(len>3) max_c = Integer.parseInt(args[3]);
+        if(len>0) VEHICLES = Integer.parseInt(args[0]);
+        if(len>1) A = Integer.parseInt(args[1]);
+        if(len>2) B = Integer.parseInt(args[2]);
+        if(len>3) C = Integer.parseInt(args[3]);
 
-        //limit to max values
-        if(max_vehicles > MAX_V) max_vehicles = MAX_V;
-        if(max_a > MAX_A) max_a = MAX_A;
-        if(max_b > MAX_B) max_b = MAX_B;
-        if(max_c > MAX_C) max_c = MAX_C;
+        //limit input to max values
+        if(VEHICLES > MAX_VEHICLES) VEHICLES = MAX_VEHICLES;
+        if(A > MAX_A) A = MAX_A;
+        if(B > MAX_B) B = MAX_B;
+        if(C > MAX_C) C = MAX_C;
         //create monitor
-        repairstation rs = new repairstation();
+        RepairStation rs = new RepairStation();
         //id to keep track of all vehicles
         int id = 0;
-        //start vehicles type a
-        for(int i =  max_a; i > 0; i--){
-            new vehicle(rs, 'a', id++).start();
+        //start vehicles type A
+        for(int i = A; i > 0; i--){
+            new Vehicle(rs, 'a', id++).start();
         }
-        //start vehicles type b
-        for(int i =  max_b; i > 0; i--){
-            new vehicle(rs, 'b', id++).start();
+        //start vehicles type B
+        for(int i = B; i > 0; i--){
+            new Vehicle(rs, 'b', id++).start();
         }
-        //start vehicles type c
-        for(int i =  max_c; i > 0; i--){
-            new vehicle(rs, 'c', id++).start();
+        //start vehicles type C
+        for(int i = C; i > 0; i--){
+            new Vehicle(rs, 'c', id++).start();
         }
     }
 }
