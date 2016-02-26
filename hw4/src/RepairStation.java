@@ -9,16 +9,14 @@ public class RepairStation {
     private int typeB = 0;
     private int typeC = 0;
     //vehicle arrives at station
-    public synchronized void arrive(char type, int id){
+    public synchronized void arrive(char type, int id) throws InterruptedException {
         //check specific type first
         //if type is A
         if(type == 'a'){
             //if all slots for type A is occupied, wait
             while(typeA == (int)Math.ceil(Begin.A /2) || total == Begin.VEHICLES){
-                try{
-                    System.out.println(id + " is waiting for vacant " + type);
-                    wait();
-                 } catch(InterruptedException e){}
+                System.out.println(id + " is waiting for vacant " + type);
+                wait();
             }
             //take slot for type A
             typeA++;
@@ -27,10 +25,8 @@ public class RepairStation {
         }else if(type == 'b'){
             //if all slots for type B is occupied, wait
             while(typeB == (int)Math.ceil(Begin.B /2) || total == Begin.VEHICLES){
-                try{
-                    System.out.println(id + " is waiting for vacant " + type);
-                    wait();
-                } catch(InterruptedException e){}
+                System.out.println(id + " is waiting for vacant " + type);
+                wait();
             }
             //take slot for type B
             typeB++;
@@ -39,10 +35,8 @@ public class RepairStation {
         } else{
             //if all slots for type C is occupied, wait
             while(typeC == (int)Math.ceil(Begin.C /2) || total == Begin.VEHICLES){
-                try{
-                    System.out.println(id + " is waiting for vacant " + type);
-                    wait();
-                } catch(InterruptedException e){}
+                System.out.println(id + " is waiting for vacant " + type);
+                wait();
             }
             //take slot for type C
             typeC++;
